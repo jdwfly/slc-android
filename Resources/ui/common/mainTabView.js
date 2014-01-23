@@ -14,7 +14,7 @@ exports.mainTabView = function() {
   */
   var sessionWindow = require('ui/common/sessionWindow').window;
   var sessionTab = Ti.UI.createTab({
-    icon: 'data/120-headphones.png',
+    //icon: 'data/120-headphones.png',
     title: 'Sessions',
     window: new sessionWindow()
   });
@@ -22,28 +22,28 @@ exports.mainTabView = function() {
 
   var mapsWindow = require('ui/common/mapsWindow').mapsWindow;
   var mapsTab = Ti.UI.createTab({
-    icon: 'data/103-map.png',
+    //icon: 'data/103-map.png',
     title: 'Maps',
     window: new mapsWindow()
   });
   
   var newsWindow = require('ui/common/newsWindow').newsWindow;
   var newsTab = Ti.UI.createTab({
-    icon: 'data/45-movie-1.png',
+    //icon: 'data/45-movie-1.png',
     title: 'Videos',
     window: new newsWindow()
   });
   
   var speakersWindow = require('ui/common/speakersWindow').speakersWindow;
   var speakersTab = Ti.UI.createTab({
-    icon: 'data/112-group.png',
+    //icon: 'data/112-group.png',
     title: 'Speakers',
     window: new speakersWindow()
   });
   
   var liveWindow = require('ui/iphon/liveWindow').liveWindow;
   var liveTab = Ti.UI.createTab({
-    icon: 'data/69-display.png',
+    //icon: 'data/69-display.png',
     title: 'Live',
     window: new liveWindow()
   });
