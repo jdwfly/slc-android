@@ -63,11 +63,11 @@ exports.window = function(opts) {
       audioPlayer.stop();
       audioPlayer.setUrl(opts.node.download);
     }
-    if (!audioPlayer.getPlaying() && !audioPlayer.getPaused()) {
+    if (!audioPlayer.playing && !audioPlayer.paused) {
       audioPlayer.setUrl(opts.node.download);
       audioPlayer.start();
     }
-    if (audioPlayer.getPaused()) {
+    if (audioPlayer.paused) {
       audioPlayer.start();
     }
   });
@@ -101,6 +101,13 @@ exports.window = function(opts) {
     });
     instance.add(notesButton);
   }
+  
+  instance.addEventListener('close', function() {
+    audioPlayer.stop();
+    if (Ti.Platform.osname === 'android') {
+      audioPlayer.release();
+    }
+  });
   
   return instance;
 };
