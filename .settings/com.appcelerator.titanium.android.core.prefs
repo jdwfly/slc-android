@@ -1,9 +1,0 @@
-android/ATTR_PROJECT_NAME=SLC2
-android/abi=armeabi-v7a
-android/distribute_path=/Users/jwheaton/Desktop
-android/keystore_alias=lbc_android
-android/keystore_password=lbc\!7media
-android/keystore_path=/Users/jwheaton/Desktop/Projects/Resources/android/lbc-android.keystore
-android/recent_output=/Users/jwheaton/Desktop
-android/sdk_version=4.4.2
-eclipse.preferences.version=1
