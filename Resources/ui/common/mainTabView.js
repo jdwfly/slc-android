@@ -1,6 +1,8 @@
 var globals = require('lib/globals');
 exports.mainTabView = function() {
-  var instance = Ti.UI.createTabGroup();
+  var instance = Ti.UI.createTabGroup({
+    exitOnClose: false
+  });
   
   /*
   // Not Used after conference

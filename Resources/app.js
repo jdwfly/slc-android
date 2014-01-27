@@ -1,6 +1,7 @@
 // GLOBAL VARS
 var globals = require('lib/globals');
 var HTTPClientWithCache = require('lib/HTTPClientWithCache').HTTPClientWithCache;
+var alertOffline = false;
 
 // Initialize and Configure Flurry Analytics
 var flurry = require('sg.flurry');
@@ -14,6 +15,12 @@ flurry.onEndSession();
 
 var MainTabView;
 MainTabView = require('/ui/common/mainTabView').mainTabView;
+mainTabView = new MainTabView();
+
+var activity = Ti.Android.currentActivity;
+activity.addEventListener('resume', function(args) {
+  alertOffline = false;
+});
 
 // If there are no sessions, populate the database
 var result = globals.dbGetEvents();
@@ -21,7 +28,6 @@ if (result.length == 0) {
   Ti.API.info("About to create events");
   Ti.App.fireEvent('events.update', {prune: true});
 }
-mainTabView = new MainTabView();
 
 mainTabView.open();
 
@@ -61,12 +67,8 @@ Ti.App.addEventListener('events.update', function(args){
     }
     events_xhr.post({url: globals.eventsUrl});
   } else {
-    // Maybe this should fail silently with just a log message
-    var dialog = Ti.UI.createAlertDialog({
-      message: 'You must be online to refresh the schedule data.',
-      ok: 'Okay',
-      title: 'Oh noes!'
-    }).show();
+    // Alert the user they are offline
+    alertUserWhenOffline();
   }
 });
 
@@ -91,12 +93,8 @@ Ti.App.addEventListener('speakers.update', function(args){
     }
     speakers_xhr.post({url: globals.speakersUrl});
   } else {
-    // Maybe this should fail silently with just a log message
-    var dialog = Ti.UI.createAlertDialog({
-      message: 'You must be online to refresh the speakers data.',
-      ok: 'Okay',
-      title: 'Oh noes!'
-    }).show();
+    // Alert the user they are offline
+    alertUserWhenOffline();
   }
 });
 
@@ -128,31 +126,9 @@ Ti.App.addEventListener('session.click', function(opts) {
   }
 });
 
-// TODO: Remove this code, no longer needed.
-Ti.App.addEventListener('day.click', function(opts){
-  var winClass = require('ui/common/workshopWindow').workshopWindow;
-  var workshopWin = new winClass(opts);
-  mainTabView.activeTab.open(workshopWin, {animated: true});
-  // Run user supplied callback
-  if (typeof opts.callback === 'function') {
-    callback();
-  }
-});
-
 Ti.App.addEventListener('map.click', function(opts) {
   var winClass = require('ui/common/staticPageWindow').staticPageWindow;
   var mapDetailWindow = new winClass(opts);
-  /**
-  if (globals.osname === "ipad") {
-    Ti.App.fireEvent('detailView.change', {
-      requirejs: 'ui/common/staticPageWindow',
-      classname: 'staticPageWindow',
-      args: opts
-    });
-  } else {
-    Ti.API._activeTab.open(mapDetailWindow, {animated: true});
-  }
-  */
   mainTabView.activeTab.open(mapDetailWindow, {animated: true});
   // Run user supplied callback
   if (typeof opts.callback === 'function') {
@@ -177,11 +153,8 @@ Ti.App.addEventListener('live.click', function() {
     flurry.logEvent('Livestream Play');
     mainTabView.activeTab.open(livePlayerWindow, {animated: true});
   } else {
-    var dialog = Ti.UI.createAlertDialog({
-      title: 'Oh noes!',
-      message: 'You must be online in order to access our live stream events.',
-      ok: 'Okay'
-    }).show();
+    // Alert the user they are offline
+    alertUserWhenOffline();
   }
 });
 Ti.App.addEventListener('live.update', function(args) {
@@ -205,11 +178,8 @@ Ti.App.addEventListener('live.update', function(args) {
     }
     live_xhr.post({url: globals.liveUrl});
   } else {
-    var dialog = Ti.UI.createAlertDialog({
-      title: 'Oh noes!',
-      message: 'You must be online in order to update the live stream event feed.',
-      ok: 'Okay'
-    }).show();
+    // Alert the user they are offline
+    alertUserWhenOffline();
   }
 });
 
@@ -230,3 +200,17 @@ var audioPlayer = Ti.Media.createAudioPlayer({
 var nowPlaying = {};
 
 Ti.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_PLAYBACK;
+
+function alertUserWhenOffline() {
+  // Show alert message the first time
+  if (alertOffline == false) {
+    var dialog = Ti.UI.createAlertDialog({
+      title: 'Oh noes!',
+      message: 'You must be online in order to access this functionality',
+      ok: 'Okay'
+    }).show();
+    alertOffline = true;
+  }
+  // Always put in a log message
+  Ti.API.info("You must be online in order to access this functionality");
+}

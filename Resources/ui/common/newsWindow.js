@@ -109,11 +109,7 @@ function getVideoData() {
     videos_xhr.post({url: 'videos'});
   } else {
     // Maybe this should fail silently with just a log message
-    var dialog = Ti.UI.createAlertDialog({
-      message: 'You must be online to refresh the videos page.',
-      ok: 'Okay',
-      title: 'Oh noes!'
-    }).show();
+    alertUserWhenOffline();
   }
 }
 
