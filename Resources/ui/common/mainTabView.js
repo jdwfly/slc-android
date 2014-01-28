@@ -3,7 +3,8 @@ exports.mainTabView = function() {
   var instance = Ti.UI.createTabGroup({
     exitOnClose: false
   });
-  
+  var apiLevel = Ti.Platform.Android.API_LEVEL, 
+      activity;
   /*
   // Not Used after conference
   var scheduleWindow = require('ui/common/scheduleWindow').scheduleWindow;
@@ -16,7 +17,6 @@ exports.mainTabView = function() {
   */
   var sessionWindow = require('ui/common/sessionWindow').window;
   var sessionTab = Ti.UI.createTab({
-    //icon: 'data/120-headphones.png',
     title: 'Sessions',
     window: new sessionWindow()
   });
@@ -24,28 +24,24 @@ exports.mainTabView = function() {
 
   var mapsWindow = require('ui/common/mapsWindow').mapsWindow;
   var mapsTab = Ti.UI.createTab({
-    //icon: 'data/103-map.png',
     title: 'Maps',
     window: new mapsWindow()
   });
   
   var newsWindow = require('ui/common/newsWindow').newsWindow;
   var newsTab = Ti.UI.createTab({
-    //icon: 'data/45-movie-1.png',
     title: 'Videos',
     window: new newsWindow()
   });
   
   var speakersWindow = require('ui/common/speakersWindow').speakersWindow;
   var speakersTab = Ti.UI.createTab({
-    //icon: 'data/112-group.png',
     title: 'Speakers',
     window: new speakersWindow()
   });
   
   var liveWindow = require('ui/iphon/liveWindow').liveWindow;
   var liveTab = Ti.UI.createTab({
-    //icon: 'data/69-display.png',
     title: 'Live',
     window: new liveWindow()
   });
@@ -69,7 +65,56 @@ exports.mainTabView = function() {
     //Ti.API.info(instance._activeTab.title);
     Ti.API._activeTab = instance._activeTab;
     //Ti.API.info(Ti.API._activeTab.title);
+    activity.invalidateOptionsMenu();
   });
+  
+  instance.addEventListener('open', function(args) {
+    activity = instance.getActivity();
+    if (apiLevel >= 11) {
+      actionBar = activity.actionBar;
+      actionBar.setIcon(null);
+      actionBar.setTitle('Spiritual Leadership Conference');
+    }
+    else {
+      activity.onPrepareOptionsMenu = function(e) {
+        createOptionsMenu(e);
+      };
+    }
+    activity.onCreateOptionsMenu = function(e) {
+      createOptionsMenu(e);
+    };
+    activity.invalidateOptionsMenu();
+  });
+  
+  function createOptionsMenu(e) {
+    var menu = e.menu;
+    menu.clear();
+    Ti.API.info(instance.activeTab.title);
+    switch (instance.activeTab) {
+      case 'Sessions':
+      
+        break;
+      case 'Maps':
+      
+        break;
+      case 'Videos':
+      
+        break;
+      case 'Speakers':
+      
+        break;
+      case 'Live':
+      
+        break;
+    }
+    var menuItem_help = menu.add({
+      title: 'help',
+      showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER
+    });
+    menuItem_help.addEventListener('click', function(args) {
+      alert('clicked: help');
+    });
+  }
   
   return instance;
 };
