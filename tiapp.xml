@@ -27,7 +27,7 @@
     <analytics>false</analytics>
     <guid>c71e36ac-b2b5-401d-ae7e-393f6a9f79da</guid>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
-        <manifest android:installLocation="auto" android:versionCode="7" android:versionName="2.4">
+        <manifest android:installLocation="auto" android:versionCode="8" android:versionName="2.4">
             <supports-screens android:anyDensity="false"/>
         </manifest>
     </android>
