@@ -40,7 +40,7 @@ exports.mainTabView = function() {
     window: new speakersWindow()
   });
   
-  var liveWindow = require('ui/iphon/liveWindow').liveWindow;
+  var liveWindow = require('ui/common/liveWindow').liveWindow;
   var liveTab = Ti.UI.createTab({
     title: 'Live',
     window: new liveWindow()

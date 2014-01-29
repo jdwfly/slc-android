@@ -148,7 +148,7 @@ Ti.App.addEventListener('speakers.click', function(opts) {
 
 Ti.App.addEventListener('live.click', function() {
   if (Ti.Network.online) {
-    var winClass = require('ui/iphon/livePlayerWindow').livePlayerWindow;
+    var winClass = require('ui/common/livePlayerWindow').livePlayerWindow;
     var livePlayerWindow = new winClass();
     flurry.logEvent('Livestream Play');
     mainTabView.activeTab.open(livePlayerWindow, {animated: true});
