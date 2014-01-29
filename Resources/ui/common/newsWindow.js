@@ -22,17 +22,6 @@ exports.newsWindow = function() {
     });
     instance.rightNavButton = refresh;
   }
-  // Android specific code
-  if (globals.osname === 'android') {
-    navBar = {index: 0};
-    instance.activity.onCreateOptionsMenu = function(e) {
-      var menu = e.menu;
-      var menuItem = menu.add({title:"Refresh"});
-      menuItem.addEventListener("click", function(f) {
-        Ti.App.fireEvent('news.updateTableViewData');
-      });
-    };
-  }
   
   newsTableView = Ti.UI.createTableView({
     data: tableData,

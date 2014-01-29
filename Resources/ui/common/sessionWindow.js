@@ -9,18 +9,6 @@ exports.window = function() {
     backgroundColor: '#eeeeee'
   });
   instance.orientationModes = [Ti.UI.PORTRAIT];
-
-  // Android Specific Code
-  if (g.osname === 'android') {
-    instance.backgroundColor = "#111111";
-    instance.activity.onCreateOptionsMenu = function(e) {
-      var menu = e.menu;
-      var menuItem = menu.add({title:"Refresh"});
-      menuItem.addEventListener("click", function(e) {
-        Ti.App.fireEvent('events.update');
-      });
-    };
-  }
   
   // iPhone Specific Code
   if (g.osname === 'iphone' || g.osname === 'ipad') {

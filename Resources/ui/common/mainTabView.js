@@ -73,7 +73,7 @@ exports.mainTabView = function() {
     if (apiLevel >= 11) {
       actionBar = activity.actionBar;
       actionBar.setIcon(null);
-      actionBar.setTitle('Spiritual Leadership Conference');
+      actionBar.setTitle('SLC');
     }
     else {
       activity.onPrepareOptionsMenu = function(e) {
@@ -90,30 +90,41 @@ exports.mainTabView = function() {
     var menu = e.menu;
     menu.clear();
     Ti.API.info(instance.activeTab.title);
-    switch (instance.activeTab) {
+    switch (instance.activeTab.title) {
       case 'Sessions':
-      
+        var menuItemSessions = menu.add({
+          title: 'Refresh',
+          showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER
+        });
+        menuItemSessions.addEventListener('click', function(args){
+          Ti.App.fireEvent('events.update');
+        });
         break;
       case 'Maps':
-      
+        // No menu needed for Maps
         break;
       case 'Videos':
-      
+        var menuItemVideos = menu.add({
+          title: 'Refresh',
+          showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER
+        });
+        menuItemVideos.addEventListener('click', function(args){
+          Ti.App.fireEvent('news.updateTableViewData');
+        });
         break;
       case 'Speakers':
-      
+        var menuItemSpeakers = menu.add({
+          title: 'Refresh',
+          showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER
+        });
+        menuItemSpeakers.addEventListener('click', function(args){
+          Ti.App.fireEvent('speakers.update', {callback: updateSpeakerData, prune: true});
+        });
         break;
       case 'Live':
-      
+        // TODO : needs menu to refresh but only during conference.
         break;
     }
-    var menuItem_help = menu.add({
-      title: 'help',
-      showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER
-    });
-    menuItem_help.addEventListener('click', function(args) {
-      alert('clicked: help');
-    });
   }
   
   return instance;
