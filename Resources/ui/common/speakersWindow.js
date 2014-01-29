@@ -3,7 +3,6 @@ var tableView = Titanium.UI.createTableView();
 var table = [];
 var index = [];
 function updateSpeakerData() {
-  //Ti.API.info(globals.speakerData());
   parseView = JSON.parse(globals.speakerData());
   var i=0;
   table = [];
@@ -55,17 +54,6 @@ exports.speakersWindow = function() {
     backgroundColor: '#eeeeee'
   });
   instance.orientationModes = [Ti.UI.PORTRAIT];
-  
-  // iPhone Specific Code
-  if (globals.osname === 'iphone' || globals.osname === 'ipad') {
-    var refresh = Ti.UI.createButton({
-      systemButton:Ti.UI.iPhone.SystemButton.REFRESH
-    });
-    refresh.addEventListener('click', function(e) {
-      Ti.App.fireEvent('speakers.update', {callback: updateSpeakerData, prune: true});
-    });
-    instance.rightNavButton = refresh;
-  }
   
   var search = Titanium.UI.createSearchBar();
   tableView.data = table;

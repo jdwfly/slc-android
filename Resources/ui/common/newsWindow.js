@@ -1,6 +1,5 @@
 var globals = require('lib/globals');
 var HTTPClientWithCache = require('lib/HTTPClientWithCache').HTTPClientWithCache;
-var ScrollableGridView = require('ui/common/scrollableGridView').createScrollableGridView;
 var newsTableView = '',
     navBar = '',
     tableData = [];
@@ -11,25 +10,11 @@ exports.newsWindow = function() {
     backgroundColor: '#eeeeee'
   });
   instance.orientationModes = [Ti.UI.PORTRAIT];
-  
-  // iPhone Specific Code
-  if (globals.osname === 'iphone' || globals.osname === 'ipad') {
-    var refresh = Ti.UI.createButton({
-      systemButton:Ti.UI.iPhone.SystemButton.REFRESH
-    });
-    refresh.addEventListener('click', function(e) {
-      Ti.App.fireEvent('news.updateTableViewData');
-    });
-    instance.rightNavButton = refresh;
-  }
-  
+
   newsTableView = Ti.UI.createTableView({
     data: tableData,
     separatorColor: '#eeeeee',
     backgroundColor: '#eeeeee'
-  });
-  newsTableView.addEventListener('click', function(x) {
-    // TODO do something with the clicks
   });
   instance.add(newsTableView);
   
@@ -56,8 +41,6 @@ function getVideoData() {
       retryCount: 2,
       cacheSeconds: 30,
       onload: function(response) {
-        //Ti.API.info("Response Data: "+ response.responseText);
-        //Ti.API.info("Is this cached data?: " + response.cached);
         var videos = JSON.parse(response.responseText);
         var tdata = [], row, thumb, title;
         for (var c in videos.nodes) {
@@ -97,7 +80,6 @@ function getVideoData() {
     });
     videos_xhr.post({url: 'videos'});
   } else {
-    // Maybe this should fail silently with just a log message
     alertUserWhenOffline();
   }
 }

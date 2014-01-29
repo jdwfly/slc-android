@@ -9,18 +9,7 @@ exports.window = function() {
     backgroundColor: '#eeeeee'
   });
   instance.orientationModes = [Ti.UI.PORTRAIT];
-  
-  // iPhone Specific Code
-  if (g.osname === 'iphone' || g.osname === 'ipad') {
-    var refresh = Ti.UI.createButton({
-      systemButton:Ti.UI.iPhone.SystemButton.REFRESH
-    });
-    refresh.addEventListener('click', function(e) {
-      Ti.App.fireEvent('events.update', {prune: true});
-    });
-    instance.rightNavButton = refresh;
-  }
-  
+
   var search = Ti.UI.createSearchBar({
     showCancel: true
   });
@@ -39,13 +28,6 @@ exports.window = function() {
     searchHidden: false,
     filterAttribute: 'searchTerm'
   });
-  /**
-  tableView.data = getSessionData();
-  tableView.search = search;
-  tableView.searchHidden = false;
-  tableView.filterAttribute = 'searchTerm';
-  //tableView.index = index;
-  */
   instance.add(tableView);
   
   instance.addEventListener('open', function(e) {
@@ -119,17 +101,7 @@ function getSessionData() {
     textView.add(categoryLabel);
     
     row.add(textView);
-    /*
-     TODO iOS 7 has a line so this can be removed
-    row.add(Ti.UI.createView({
-      bottom: 0,
-      width: "90%",
-      height: 1,
-      backgroundColor: '#e0e0e0'
-    }));
-    */
     data.push(row);
-   
   }
   return data;
 }
