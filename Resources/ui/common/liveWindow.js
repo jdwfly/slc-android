@@ -1,6 +1,6 @@
 var globals = require('lib/globals');
 var tableView = Ti.UI.createTableView({
-  height: (globals.osname === "ipad") ? 300 : 150,
+  height: 150,
   bottom: 0,
   backgroundColor: '#e9e9e9',
   separatorColor: '#e9e9e9'
@@ -11,20 +11,7 @@ exports.liveWindow = function() {
     title: 'Live Stream',
     backgroundColor: '#e9e9e9'
   });
-  
-  // iPhone Specific Code
-  /* Not needed after conference.
-  if (globals.osname === 'iphone' || globals.osname === 'ipad') {
-    var refresh = Ti.UI.createButton({
-      systemButton:Ti.UI.iPhone.SystemButton.REFRESH
-    });
-    refresh.addEventListener('click', function(e) {
-      Ti.App.fireEvent('live.update', {prune: true});
-    });
-    instance.rightNavButton = refresh;
-  }
-  */
-  
+
   var liveImage = Ti.UI.createImageView({
     image: "/data/livestream.png",
     top: 20,
@@ -86,7 +73,7 @@ exports.liveWindow = function() {
   lsServicesView.add(lsSunPM);
   lsServicesView.add(lsWed);
   instance.add(lsServicesView);
-  /*
+  /* TODO: Change to auto-load this instead of commenting out.
   tableView.setData(data, {animated: false});
   instance.add(tableView);
   
@@ -98,7 +85,6 @@ exports.liveWindow = function() {
 };
 
 function updateLiveData() {
-  //Ti.API.info(globals.liveData());
   parseData = JSON.parse(globals.liveData());
   var i = 0;
   data = [];
@@ -145,7 +131,6 @@ function updateLiveData() {
     data.push(row);
     data.push(paddingRow);
   }
-  //Ti.API.info(data);
   tableView.setData(data, {animated: false});
 }
 
