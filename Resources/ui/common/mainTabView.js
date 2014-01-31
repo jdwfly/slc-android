@@ -1,8 +1,6 @@
 var globals = require('lib/globals');
 exports.mainTabView = function() {
-  var instance = Ti.UI.createTabGroup({
-    exitOnClose: false
-  });
+  var instance = Ti.UI.createTabGroup();
   var apiLevel = Ti.Platform.Android.API_LEVEL, 
       activity;
   /*
@@ -80,7 +78,6 @@ exports.mainTabView = function() {
   function createOptionsMenu(e) {
     var menu = e.menu;
     menu.clear();
-    Ti.API.info(instance.activeTab.title);
     switch (instance.activeTab.title) {
       case 'Sessions':
         var menuItemSessions = menu.add({

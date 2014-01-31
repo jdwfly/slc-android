@@ -12,7 +12,6 @@ flurry.setCaptureUncaughtExceptions(true);
 flurry.onStartSession('KY6S957MMTP2NVBXXD8B');
 flurry.onEndSession();
 
-
 var MainTabView;
 MainTabView = require('/ui/common/mainTabView').mainTabView;
 mainTabView = new MainTabView();
