@@ -1,6 +1,6 @@
 var globals = require('lib/globals');
 var tableView = Ti.UI.createTableView({
-  height: 150,
+  height: '150dp',
   bottom: 0,
   backgroundColor: '#e9e9e9',
   separatorColor: '#e9e9e9'
@@ -14,17 +14,17 @@ exports.liveWindow = function() {
 
   var liveImage = Ti.UI.createImageView({
     image: "/data/livestream.png",
-    top: 20,
-    width: 300,
-    height: 103
+    top: '20dp',
+    width: '300dp',
+    height: '103dp'
   });
   instance.add(liveImage);
   var liveButton = Ti.UI.createButton({
     title: "Watch Live",
-    font: {fontWeight: "bold"},
-    width: 200,
-    height: 40,
-    top: 140,
+    font: {fontWeight: "bold", fontSize: '12dp'},
+    width: '200dp',
+    height: '40dp',
+    top: '140dp',
     backgroundImage: "/data/watchlive.png",
     color: "#ffffff"
   });
@@ -36,35 +36,35 @@ exports.liveWindow = function() {
   var lsTitle = Ti.UI.createLabel({
     text: 'Upcoming Live Stream Events',
     color: "#313131",
-    font: {fontFamily:"Georgia", fontSize: 16, fontWeight: 'bold'},
+    font: {fontFamily:"Georgia", fontSize: '16dp', fontWeight: 'bold'},
     width: 'auto',
-    top: 185
+    top: '185dp'
   });
   instance.add(lsTitle);
   
   var lsServicesView = Ti.UI.createView({
     width: 'auto',
-    top: 215,
+    top: '215dp',
     height: 'auto',
     layout: 'vertical'
   });
   var lsSunAM = Ti.UI.createLabel({
     text: 'Sunday Morning @ 11 am',
-    font: {fontSize: '14', fontWeight: 'bold'},
+    font: {fontSize: '14dp', fontWeight: 'bold'},
     color: "#313131",
     height: 'auto',
     width: 'auto'
   });
   var lsSunPM = Ti.UI.createLabel({
     text: 'Sunday Evening @ 5 pm',
-    font: {fontSize: '14', fontWeight: 'bold'},
+    font: {fontSize: '14dp', fontWeight: 'bold'},
     color: "#313131",
     height: 'auto',
     width: 'auto'
   });
   var lsWed = Ti.UI.createLabel({
     text: 'Thursday Evening @ 7 pm',
-    font: {fontSize: '14', fontWeight: 'bold'},
+    font: {fontSize: '14dp', fontWeight: 'bold'},
     color: "#313131",
     height: 'auto',
     width: 'auto'
@@ -99,13 +99,13 @@ function updateLiveData() {
       width: 'auto',
       layout: 'vertical',
       bottom: 0,
-      left: 10,
-      right: 10
+      left: '10dp',
+      right: '10dp'
     });
     
     sessionFirst = Ti.UI.createLabel({
       text: globals.html_decode(node.title),
-      font: {fontSize: '14', fontWeight: 'bold'},
+      font: {fontSize: '14dp', fontWeight: 'bold'},
       color: "#313131",
       height: 'auto',
       width: 'auto'
@@ -114,7 +114,7 @@ function updateLiveData() {
     
     sessionSecond = Ti.UI.createLabel({
       text: (node.day + " @ " + node.datefrom),
-      font: {fontSize: '12'},
+      font: {fontSize: '12dp'},
       color: "#313131",
       height: 'auto',
       width: 'auto'
@@ -124,7 +124,7 @@ function updateLiveData() {
     row.add(content);
     
     var paddingRow = Ti.UI.createTableViewRow({
-      height: 10,
+      height: '10dp',
       selectionStyle: "none"
     });
         

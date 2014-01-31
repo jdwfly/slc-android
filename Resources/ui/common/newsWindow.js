@@ -50,15 +50,16 @@ function getVideoData() {
           });
           thumb = Ti.UI.createImageView({
             image: videos.nodes[c].node.image,
-            width: 280,
-            height: 135,
-            top: 10
+            width: '280dp',
+            height: '135dp',
+            top: '10dp'
           });
           row.add(thumb);
           title = Ti.UI.createLabel({
             text: videos.nodes[c].node.title,
-            width: '280',
-            height: 'auto'
+            width: '280dp',
+            height: 'auto',
+            font: {fontSize: '14dp'}
           });
           row.add(title);
           
