@@ -31,11 +31,16 @@ exports.window = function() {
   instance.add(tableView);
   
   instance.addEventListener('open', function(e) {
+    search.hide();
+    search.show();
     instance.addEventListener('focus', function(f) {
       Ti.App.fireEvent('events.update');
     });
   });
   instance.addEventListener('click', function(e) {
+    search.value = "";
+    search.hide();
+    search.show();
     Ti.App.fireEvent('session.click', {nid: e.row.node.nid});
   });
   
@@ -62,15 +67,15 @@ function getSessionData() {
     row = Ti.UI.createTableViewRow({
       backgroundColor: '#eeeeee',
       layout: 'absolute',
-      height: 78,
+      height: '78dp',
       searchTerm: title + ' ' + speaker + ' ' + category,
       hasChild: true
     });
     row.node = node;
     
     textView = Ti.UI.createView({
-      top: 5,
-      left: 15,
+      top: '5dp',
+      left: '15dp',
       width: 'auto',
       height: 'auto',
       layout: 'vertical'
@@ -79,7 +84,7 @@ function getSessionData() {
     titleLabel = Ti.UI.createLabel({
       text: title,
       color: '#273a51',
-      font: {fontWeight: 'bold'},
+      font: {fontWeight: 'bold', fontSize: '14dp'},
       left: 0
     });
     textView.add(titleLabel);
@@ -87,7 +92,7 @@ function getSessionData() {
     speakerLabel = Ti.UI.createLabel({
       text: speaker,
       color: '#4d73a0',
-      font: {fontSize: 12},
+      font: {fontSize: '12dp'},
       left: 0
     });
     textView.add(speakerLabel);
@@ -95,7 +100,7 @@ function getSessionData() {
     categoryLabel = Ti.UI.createLabel({
       text: category,
       color: '#515151',
-      font: {fontSize: 12, fontStyle: 'italic'},
+      font: {fontSize: '12dp', fontStyle: 'italic'},
       left: 0
     });
     textView.add(categoryLabel);
