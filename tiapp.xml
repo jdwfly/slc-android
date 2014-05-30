@@ -9,7 +9,7 @@
         <target device="android">true</target>
         <target device="blackberry">false</target>
     </deployment-targets>
-    <sdk-version>3.2.0.GA</sdk-version>
+    <sdk-version>3.2.3.GA</sdk-version>
     <id>org.lancasterbaptist.slc</id>
     <name>SLC</name>
     <version>2.4</version>
@@ -27,8 +27,7 @@
     <analytics>false</analytics>
     <guid>c71e36ac-b2b5-401d-ae7e-393f6a9f79da</guid>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
-        <manifest android:installLocation="auto" android:versionCode="8" android:versionName="2.4">
-        </manifest>
+        <manifest android:installLocation="auto" android:versionCode="9" android:versionName="2.4"/>
     </android>
     <modules>
         <module platform="android" version="2.0">sg.flurry</module>
