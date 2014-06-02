@@ -97,6 +97,15 @@ exports.mainTabView = function() {
     var menu = e.menu;
     menu.clear();
     switch (instance.activeTab.title) {
+      case 'Schedule':
+        var menuItemSchedule = menu.add({
+          title: 'Refresh',
+          showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER
+        });
+        menuItemSchedule.addEventListener('click', function(args) {
+          Ti.App.fireEvent('events.update');
+        });
+        break;
       case 'Sessions':
         var menuItemSessions = menu.add({
           title: 'Refresh',
@@ -124,7 +133,7 @@ exports.mainTabView = function() {
           showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER
         });
         menuItemSpeakers.addEventListener('click', function(args){
-          Ti.App.fireEvent('speakers.update', {callback: updateSpeakerData, prune: true});
+          Ti.App.fireEvent('speakers.update', {prune: true});
         });
         break;
       case 'Live':
