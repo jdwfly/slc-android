@@ -61,7 +61,7 @@ exports.mainTabView = function() {
   
   if (globals.osname === 'android' && Ti.Platform.Android.API_LEVEL >= 14) {
     if (config.tabs.live === true) {
-      var liveWindow = require('ui/iphon/liveWindow').liveWindow;
+      var liveWindow = require('ui/common/liveWindow').liveWindow;
       var liveTab = Ti.UI.createTab({
         icon: 'data/69-display.png',
         title: 'Live',
