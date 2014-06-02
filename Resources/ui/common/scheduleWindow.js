@@ -6,30 +6,16 @@ exports.scheduleWindow = function() {
     title: 'Schedule',
     backgroundColor: '#eeeeee'
   });
-  instance.orientationModes = [Ti.UI.PORTRAIT];
   
   // Android Specific Code
-  if (globals.osname === 'android') {
-    instance.backgroundColor = "#111111";
-    instance.activity.onCreateOptionsMenu = function(e) {
-      var menu = e.menu;
-      var menuItem = menu.add({title:"Refresh"});
-      menuItem.addEventListener("click", function(e) {
-        Ti.App.fireEvent('events.update');
-      });
-    };
-  }
-  
-  // iPhone Specific Code
-  if (globals.osname === 'iphone' || globals.osname === 'ipad') {
-    var refresh = Ti.UI.createButton({
-      systemButton:Ti.UI.iPhone.SystemButton.REFRESH
+  instance.backgroundColor = "#111111";
+  instance.activity.onCreateOptionsMenu = function(e) {
+    var menu = e.menu;
+    var menuItem = menu.add({title:"Refresh"});
+    menuItem.addEventListener("click", function(e) {
+      Ti.App.fireEvent('events.update');
     });
-    refresh.addEventListener('click', function(e) {
-      Ti.App.fireEvent('events.update', {prune: true});
-    });
-    instance.rightNavButton = refresh;
-  }
+  };
 
   var scheduleData = getEventData();
   scheduleTableView = Ti.UI.createTableView({
