@@ -7,7 +7,7 @@ exports.speakerDetailWindow = function(opts) {
   });
   var sdata = [];
   var headerRow = Ti.UI.createTableViewRow({
-    height: 120,
+    height: "120dp",
     borderWidth: 0,
     layout: "vertical",
     borderColor: "#313131",
@@ -20,10 +20,10 @@ exports.speakerDetailWindow = function(opts) {
   var imagePath = (opts.img) ? opts.img.replace(/\\/gi, ""): '';
   var speakerImage = Ti.UI.createImageView({
     image: imagePath,
-    top:20,
-    left:20,
-    width:80,
-    height:90,
+    top:"20dp",
+    left:"20dp",
+    width:"80dp",
+    height:"90dp",
     borderWidth: 5,
     borderColor: "#c6c6c6"
   });
@@ -31,22 +31,22 @@ exports.speakerDetailWindow = function(opts) {
   // Add the name of the speaker
   var speakerTitle = Ti.UI.createLabel({
     text: opts.title,
-    top: -65,
-    left: 115,
+    top: "-65dp",
+    left: "115dp",
     width: "auto",
     height: "auto",
     color: "#a1b1c4",
-    font: {fontWeight: "bold", fontSize: 18, fontFamily: "Georgia"}
+    font: {fontWeight: "bold", fontSize: "18dp", fontFamily: "Georgia"}
   });
   
   var speakerLocation = Ti.UI.createLabel({
     text: opts.slcLocation,
     top: 0,
-    left: 115,
+    left: "115dp",
     width: "auto",
     height: "auto",
     color: "#a1b1c4",
-    font: {fontSize: 14, fontFamily: "Georgia"}
+    font: {fontSize: "14dp", fontFamily: "Georgia"}
   });
   headerRow.add(speakerTitle);
   headerRow.add(speakerLocation);
@@ -62,8 +62,8 @@ exports.speakerDetailWindow = function(opts) {
     var bioLabel = Ti.UI.createLabel({
       text: bio,
       top: 0,
-      left: 20,
-      right: 20,
+      left: "20dp",
+      right: "20dp",
       height: "auto",
       color: "#7f7f7f"
     });
@@ -78,25 +78,25 @@ exports.speakerDetailWindow = function(opts) {
     var sessionHeader = Ti.UI.createTableViewRow({selectionStyle: "none"});
     var sessionHeaderTitle = Ti.UI.createLabel({
       text: "Workshop Sessions",
-      font: {fontSize:14, fontFamily: "Georgia", fontWeight: "bold"},
+      font: {fontSize:"14dp", fontFamily: "Georgia", fontWeight: "bold"},
       color: "#a1b1c4",
-      left: 20,
-      right: 20
+      left: "20dp",
+      right: "20dp"
     });
     sessionHeader.add(sessionHeaderTitle);
     sdata.push(sessionHeader);
     for  (var i = 0, node; node = sessions[i]; i++) {
       Ti.API.info(node);
       var sessionRow = Ti.UI.createTableViewRow({
-        height: "auto",
+        height: "50dp",
         layout: "vertical",
         selectionStyle: "none"
       });
       var sessionTitle = Ti.UI.createLabel({
         text: globals.html_decode(node.title),
         top: 0,
-        left: 20,
-        font: {fontSize:14},
+        left: "20dp",
+        font: {fontSize:"14dp"},
         width: "auto",
         height: "auto",
         color: "#b0b0b0"
@@ -108,10 +108,10 @@ exports.speakerDetailWindow = function(opts) {
         text: dayofweek + " | " + sessionTime + sessionRoom,
         width: "auto",
         height: "auto",
-        font: {fontSize: 12},
+        font: {fontSize: "12dp"},
         color: "#7c7c7c",
         top: 0,
-        left: 20
+        left: "20dp"
       });
       
       sessionRow.add(sessionTitle);
@@ -120,8 +120,8 @@ exports.speakerDetailWindow = function(opts) {
       if (node.notes != 'None') {
         notesImage = Ti.UI.createImageView({
           image: '/data/179-notepad.png',
-          right: 15,
-          top: -30
+          right: "15dp",
+          top: "-30dp"
         });
         notesImage.addEventListener('click', function(g) {
           Ti.API.info(g);
@@ -133,7 +133,7 @@ exports.speakerDetailWindow = function(opts) {
       sdata.push(sessionRow);
       
       var paddingRow = Ti.UI.createTableViewRow({
-        height: 10,
+        height: "10dp",
         selectionStyle: "none"
       });
       sdata.push(paddingRow);
