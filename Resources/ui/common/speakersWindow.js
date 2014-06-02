@@ -53,7 +53,6 @@ exports.speakersWindow = function() {
     title: 'Speakers',
     backgroundColor: '#eeeeee'
   });
-  instance.orientationModes = [Ti.UI.PORTRAIT];
   
   var search = Titanium.UI.createSearchBar();
   tableView.data = table;
