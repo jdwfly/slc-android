@@ -5,7 +5,7 @@ exports.mainTabView = function() {
       activity;
   
   // Grab the config.json file
-  var configFile = Ti.Filesystem.getFile("config.json");
+  var configFile = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, "config.json");
   var preParseData = (configFile.read().text);
   var config = JSON.parse(preParseData);
   
