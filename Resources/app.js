@@ -4,13 +4,8 @@ var HTTPClientWithCache = require('lib/HTTPClientWithCache').HTTPClientWithCache
 var alertOffline = false;
 
 // Initialize and Configure Flurry Analytics
-var flurry = require('sg.flurry');
-flurry.setContinueSessionMillis(10000);
-flurry.setReportLocation(true);
-flurry.setUseHttps(true);
-flurry.setCaptureUncaughtExceptions(true);
-flurry.onStartSession('KY6S957MMTP2NVBXXD8B');
-flurry.onEndSession();
+var flurry = require('ti.flurry');
+flurry.initialize('KY6S957MMTP2NVBXXD8B');
 
 var MainTabView;
 MainTabView = require('/ui/common/mainTabView').mainTabView;
