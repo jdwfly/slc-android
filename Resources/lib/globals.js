@@ -91,7 +91,7 @@ exports.slcdbSaveEvents = function(events) {
     );
   }
   Ti.API.info('DB:LAST ROW INSERTED, lastInsertRowId = ' + _slcDB.lastInsertRowId);
-  Ti.App.fireEvent('sessions.updateTableView');
+  Ti.App.fireEvent('schedule.updateTableView');
   _slcDB.close();
 };
 
