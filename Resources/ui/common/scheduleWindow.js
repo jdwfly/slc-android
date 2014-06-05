@@ -63,7 +63,7 @@ function getEventData() {
     room = events[x].room;
     title = globals.html_decode(events[x].title);
     row = Ti.UI.createTableViewRow({
-      height: 50,
+      height: "60dp",
       backgroundColor: '#eeeeee',
       layout: 'absolute'
     });
@@ -73,43 +73,41 @@ function getEventData() {
     timeLabel = Ti.UI.createLabel({
       text: time,
       color: '#273a51',
-      top: 5,
-      left: 25,
-      font: {fontWeight: 'bold'},
+      top: "5dp",
+      left: "25dp",
+      font: {fontWeight: 'bold', fontSize: "10dp"},
       height: 'auto',
       width: 'auto'
     });
     roomLabel = Ti.UI.createLabel({
       text: room,
       color: '#20607c',
-      top: 5,
+      top: "5dp",
       width: 'auto',
       height: 'auto',
-      right: 25,
-      font: {fontWeight: 'bold'}
+      right: "25dp",
+      font: {fontWeight: 'bold', fontSize: "10dp"}
     });
     titleLabel = Ti.UI.createLabel({
       text: title,
       color: '#515151',
-      top: 25,
-      left: 25,
+      top: "25dp",
+      left: "25dp",
       width: "80%",
       height: 'auto',
-      font: {fontFamily: 'Times New Roman', fontSize: 18}
+      font: {fontFamily: 'Times New Roman', fontSize: "16dp"}
     });
     row.add(Ti.UI.createView({
       top: 0,
-      left: 25,
-      height: 1,
+      left: 0,
+      height: "1dp",
       backgroundColor: '#e0e0e0',
-      width: (row.hasChild) ? "90%" : "85%"
+      width: "100%"
     }));
     row.add(timeLabel);
     row.add(roomLabel);
     row.add(titleLabel);
-    if (title.length > 30) {
-      row.setHeight(70);
-    }
+
     row.nid = events[x].nid;
     
     if (header == currentDay) {
@@ -122,18 +120,18 @@ function getEventData() {
       var formattedDay = globals.date('l, F j', timestamp);
       var headerView = Ti.UI.createView({
         backgroundColor: '#eeeeee',
-        height: 30,
+        height: "30dp",
         width: 'auto'
       });
       var headerLabel = Ti.UI.createLabel({
         text: formattedDay,
         color: '#20607c',
-        font: {fontSize: 20, fontWeight: 'bold'},
-        left: 25
+        font: {fontSize: "18dp", fontWeight: 'bold'},
+        left: "25dp"
       });
       headerView.add(headerLabel);
       var footerView = Ti.UI.createView({
-        height: 16,
+        height: "16dp",
         backgroundColor: '#eeeeee'
       });
       if (globals.osname === "android") {
