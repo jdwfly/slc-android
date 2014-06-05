@@ -181,7 +181,7 @@ exports.dbGetWorkshopEvents = function(nid) {
   var results = [];
   _slcDB = Ti.Database.open('slcdb');
   var parentNode = _slcDB.execute('SELECT * FROM events WHERE nid='+nid);
-  var resultSet = _slcDB.execute('SELECT * FROM events WHERE eventtype="Session" AND day="'+parentNode.fieldByName('day')+'" AND datefrom='+parentNode.fieldByName('datefrom')+' ORDER BY weight ASC');
+  var resultSet = _slcDB.execute('SELECT * FROM events WHERE eventtype="Session" AND day="'+parentNode.fieldByName('day')+'" AND datefrom='+parentNode.fieldByName('datefrom')+' ORDER BY room ASC');
   //Ti.API.info('ROWS FETCHED = ' + resultSet.getRowCount());
   while (resultSet.isValidRow()) {
     results.push({
