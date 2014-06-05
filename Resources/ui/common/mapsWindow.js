@@ -28,7 +28,7 @@ exports.mapsTableView = function() {
   var data = [
     {
       title: "Auditorium Seating",
-      font: {fontSize: '12dp'},
+      font: {fontSize: '16dp'},
       height: '40dp',
       color: '#515151',
       hasChild:dataHasChild,
@@ -37,7 +37,7 @@ exports.mapsTableView = function() {
     },
     {
       title: "Campus",
-      font: {fontSize: '12dp'},
+      font: {fontSize: '16dp'},
       height: '40dp',
       color: '#515151',
       hasChild:dataHasChild,
@@ -46,7 +46,7 @@ exports.mapsTableView = function() {
     },
     {
       title: "Nursery",
-      font: {fontSize: '12dp'},
+      font: {fontSize: '16dp'},
       height: '40dp',
       color: '#515151', 
       hasChild:dataHasChild, 
@@ -55,7 +55,7 @@ exports.mapsTableView = function() {
     },
     {
       title: "Revels Floor 1",
-      font: {fontSize: '12dp'},
+      font: {fontSize: '16dp'},
       height: '40dp',
       color: '#515151',
       hasChild:dataHasChild,
@@ -64,7 +64,7 @@ exports.mapsTableView = function() {
     },
     {
       title: "Revels Floor 2",
-      font: {fontSize: '12dp'},
+      font: {fontSize: '16dp'},
       height: '40dp',
       color: '#515151',
       hasChild:dataHasChild,
@@ -73,7 +73,7 @@ exports.mapsTableView = function() {
     },
     {
       title: "Revels Floor 3",
-      font: {fontSize: '12dp'},
+      font: {fontSize: '16dp'},
       height: '40dp',
       color: '#515151',
       hasChild:dataHasChild,
@@ -82,7 +82,7 @@ exports.mapsTableView = function() {
     },
     {
       title: "West Wing Floor 1",
-      font: {fontSize: '12dp'},
+      font: {fontSize: '16dp'},
       height: '40dp',
       color: "#515151",
       hasChild:dataHasChild,
@@ -91,7 +91,7 @@ exports.mapsTableView = function() {
     },
     {
       title: "West Wing Floor 2",
-      font: {fontSize: '12dp'},
+      font: {fontSize: '16dp'},
       height: '40dp',
       color: "#515151",
       hasChild:dataHasChild,
