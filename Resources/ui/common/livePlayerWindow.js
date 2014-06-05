@@ -1,24 +1,16 @@
 exports.livePlayerWindow = function() {
   var instance = Ti.UI.createWindow({});
-  instance.orientationModes = [Ti.UI.PORTRAIT, Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT];
   
-  var player = Ti.Media.createVideoPlayer({
-    url: "http://lancaster-apple-live.adaptive.level3.net/apple/cwie-lbc/lbc/lbc_iphone.m3u8",
-    mediaControlStyle: Ti.Media.VIDEO_CONTROL_DEFAULT,
-    scalingMode:Titanium.Media.VIDEO_SCALING_ASPECT_FIT
-  });
-  instance.add(player);
-  player.play();
-  
-  instance.addEventListener('close', function() {
-    player.stop();
-    Ti.UI.orientation = Ti.UI.PORTRAIT;
+  instance.addEventListener('android:back', function(e) {
+    this.close();
   });
   
-  instance.addEventListener('blur', function() {
-    player.stop();
-    Ti.UI.orientation = Ti.UI.PORTRAIT;
+  var webview = Ti.UI.createWebView({
+    url: 'http://new.livestream.com/accounts/7973191/events/2929816/player?width=960&height=540&autoPlay=true&mute=false',
+    softKeyboardOnFocus: Titanium.UI.Android.SOFT_KEYBOARD_HIDE_ON_FOCUS,
+    enableZoomControls: false
   });
+  instance.add(webview);
   
   return instance;
 };

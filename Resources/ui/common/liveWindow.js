@@ -29,7 +29,8 @@ exports.liveWindow = function() {
     color: "#ffffff"
   });
   liveButton.addEventListener('click', function(f) {
-    Ti.App.fireEvent('live.click');
+    //Ti.App.fireEvent('live.click');
+    Ti.Platform.openURL("https://new.livestream.com/lancasterbaptistchurch/events/2929816");
   });
   instance.add(liveButton);
   
