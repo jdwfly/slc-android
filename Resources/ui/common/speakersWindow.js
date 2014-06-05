@@ -22,7 +22,9 @@ function updateSpeakerData() {
         sessions: parseView.nodes[i].node.sessions,
         img: parseView.nodes[i].node.img,
         hasChild: true,
-        color: '#515151'
+        color: '#515151',
+        height: '40dp',
+        font: {fontSize: '16dp'}
       });
     } else {
       index.push({title:firstLetter, index:(table.length)});
@@ -37,7 +39,9 @@ function updateSpeakerData() {
         img: parseView.nodes[i].node.img,
         hasChild: true,
         header: firstLetter,
-        color: '#515151'
+        color: '#515151',
+        height: '40dp',
+        font: {fontSize: '16dp'}
       });
     }
     curhead = firstLetter;
