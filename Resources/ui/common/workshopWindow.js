@@ -28,21 +28,21 @@ exports.workshopWindow = function(opts) {
       row = Ti.UI.createTableViewRow({
         backgroundColor: '#eeeeee',
         layout: 'absolute',
-        height: 90
+        height: "90dp"
       });
       row.node = node;
       if (node.notes != "None") {
         row.notes = node.notes;
         notesImage = Ti.UI.createImageView({
           image: '/data/notes.png',
-          left: 15,
-          top: 5,
-          height: 74,
-          width: 63
+          left: "15dp",
+          top: "5dp",
+          height: "74dp",
+          width: "63dp"
         });
         notesImage.notes = node.notes;
         notesImage.addEventListener('click', function(s) {
-          if (this.notes == "None") {
+          if (this.notes === "None" || this.notes === null) {
             var dialog = Ti.UI.createAlertDialog({
               message: "We're sorry, but the notes for this session are not available.",
               ok: 'Okay',
@@ -56,8 +56,8 @@ exports.workshopWindow = function(opts) {
       }
       
       textView = Ti.UI.createView({
-        top: 5,
-        left: 85,
+        top: "5dp",
+        left: "85dp",
         width: '70%',
         height: 'auto',
         layout: 'vertical'
@@ -66,7 +66,7 @@ exports.workshopWindow = function(opts) {
       titleLabel = Ti.UI.createLabel({
         text: title,
         color: '#273a51',
-        font: {fontWeight: 'bold'},
+        font: {fontWeight: 'bold', fontSize: '16dp'},
         left: 0
       });
       textView.add(titleLabel);
@@ -80,7 +80,7 @@ exports.workshopWindow = function(opts) {
       speakerLabel = Ti.UI.createLabel({
         text: speaker + room,
         color: '#4d73a0',
-        font: {fontSize: 12},
+        font: {fontSize: "12dp"},
         left: 0
       });
       textView.add(speakerLabel);
@@ -88,7 +88,7 @@ exports.workshopWindow = function(opts) {
       categoryLabel = Ti.UI.createLabel({
         text: category,
         color: '#515151',
-        font: {fontSize: 12, fontStyle: 'italic'},
+        font: {fontSize: "12dp", fontStyle: 'italic'},
         left: 0
       });
       textView.add(categoryLabel);
@@ -96,11 +96,11 @@ exports.workshopWindow = function(opts) {
       row.add(textView);
       row.add(Ti.UI.createView({
         bottom: 0,
-        width: "90%",
-        height: 1,
+        width: "100%",
+        height: "1dp",
         backgroundColor: '#e0e0e0'
       }));
-      
+      /*
       row.addEventListener('click', function(e) {
         //Ti.API.info(JSON.stringify(e.row));
         var options = [];
@@ -145,6 +145,7 @@ exports.workshopWindow = function(opts) {
         });
         sessionDialog.show();
       });
+      */
       
       tableData.push(row);
     }
