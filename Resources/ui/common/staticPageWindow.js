@@ -2,12 +2,12 @@ var globals = require('lib/globals');
 exports.staticPageWindow = function(opts) {
   var instance = Ti.UI.createWindow({
     title: opts.title,
-    backgroundColor: '#eeeeee',
-    softKeyboardOnFocus: Titanium.UI.Android.SOFT_KEYBOARD_HIDE_ON_FOCUS
+    backgroundColor: '#eeeeee'
   });
   
   var webView = Ti.UI.createWebView({
-    url: '/ui/static/' + opts.arg
+    url: '/ui/static/' + opts.arg,
+    softKeyboardOnFocus: Titanium.UI.Android.SOFT_KEYBOARD_HIDE_ON_FOCUS
   });
   instance.add(webView);
   
