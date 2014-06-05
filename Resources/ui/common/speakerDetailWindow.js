@@ -65,7 +65,8 @@ exports.speakerDetailWindow = function(opts) {
       left: "20dp",
       right: "20dp",
       height: "auto",
-      color: "#7f7f7f"
+      color: "#7f7f7f",
+      font: {fontSize: "14dp", fontFamily: "Georgia"}
     });
     bioRow.add(bioLabel);
     sdata.push(bioRow);
